@@ -1,0 +1,4 @@
+please run the test function to verify the code !!
+
+>g++ -std=c++11 tests.cpp
+>./a.out

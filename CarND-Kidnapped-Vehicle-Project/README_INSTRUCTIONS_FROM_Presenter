@@ -1,0 +1,15 @@
+Instructions
+
+changes have been made in particle filter.cpp which was the original problem definition
+
+some errors occured in main.cpp , i made slight changes to alleviate the error.
+
+
+*run ./clean.sh
+*run ./build.sh
+*run ./run.sh
+
+then open the simulator to see the results
+
+
+Thank You

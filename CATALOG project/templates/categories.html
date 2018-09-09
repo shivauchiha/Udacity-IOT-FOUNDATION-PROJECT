@@ -1,0 +1,47 @@
+<html>
+
+<body>
+ 
+<h1><b>CATEGORIES</b></h1>
+{%  if 'username' not in login_session %}
+   <a href = '{{url_for('showLogin') }}'>Login</a>  </br></br>
+
+{% else %}
+   <a href = '{{url_for('gdisconnect') }}'>Logout</a>  </br></br>
+{% endif %}
+{%  if 'username'  in login_session %}
+   <a href='{{url_for('newcategories') }}'>Add new catebories</a>
+{% endif %}
+
+<p><!--MESSAGE FLASHING EXAMPLE -->
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    
+    <ul>
+    {% for message in messages %}
+      <li><strong>{{message}}</strong></li>
+      {% endfor %}
+    </ul>
+    {% endif %}
+    {% endwith %}</p>
+
+
+{% for i in categories %}
+
+<div>
+
+<p><a href='{{url_for('categoriesitems', categories_name = i.name) }}'>{{i.name}}</a>
+{%  if 'username'  in login_session and i.user_id == login_session['user_id'] %}
+   <a href = '{{url_for('deletecategories',name=i.name) }}'>Delete</a>
+{% endif %}
+</p>
+
+</div>
+
+
+
+
+{% endfor %}
+</body>
+
+</html>

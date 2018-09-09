@@ -1,0 +1,49 @@
+<html>
+
+<body>
+    
+<h1>{{categories.name}}</h1>
+{%  if 'username'  in login_session %}
+    <a href = '{{url_for('newItems', categories_name = categories.name) }}'>
+  Create New Item</a>
+{% endif %}
+
+
+    
+
+    <a href= '{{url_for('listcategories')}}'>GO BACK</a>
+<!--MESSAGE FLASHING EXAMPLE -->
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+
+<ul>
+{% for message in messages %}
+  <li><strong>{{message}}</strong></li>
+  {% endfor %}
+</ul>
+{% endif %}
+{% endwith %}
+
+{% for i in items %}
+
+<div>
+
+<p><b><i>Name</i></b>:{{i.name}}</p>
+
+<p><b><i>Description</i></b>:{{i.description}}</p>
+{%  if 'username'  in login_session  and i.user_id == login_session['user_id']  %}
+   <a href='{{url_for('editItems', categories_name = categories.name, menu_name = i.name) }}'>Edit</a>
+
+</br>
+   <a href = '{{url_for('deleteItems', categories_name = categories.name, menu_name = i.name) }}'>Delete</a>
+  
+{% endif %}
+
+
+</div>
+
+
+{% endfor %}
+</body>
+
+</html>

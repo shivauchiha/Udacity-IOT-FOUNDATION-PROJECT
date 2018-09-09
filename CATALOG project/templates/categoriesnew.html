@@ -1,0 +1,18 @@
+<html>
+<body>
+<h1> New Category information adder </h1>
+
+<form action="{{url_for('newcategories' )}}" method = 'POST'>
+
+<p><b><i>Name</i></b>:</p>
+
+<input type='text' size='30' name='name'>
+
+
+
+<input type='submit' value='Create'>
+
+</form>
+<a href= '{{url_for('listcategories')}}'>Cancel</a>
+</body>
+</html>
